@@ -17,7 +17,7 @@ terraform {
   #}
   required_version = "~> 0.14.11"
 
-  cloud {
+  backend "remote" {
     organization = "telal"
 
     workspaces {
