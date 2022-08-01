@@ -18,23 +18,32 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          tf_actions_working_directory : staging_env
 
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
+        with:
+          tf_actions_working_directory : staging_env
 
       - name: Terraform Init
         id: init
         run: terraform init
+        with:
+          tf_actions_working_directory : staging_env
       
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+        with:
+          tf_actions_working_directory : staging_env
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
         run: terraform plan -no-color -input=false
+        with:
+          tf_actions_working_directory : staging_env
         continue-on-error: true
 
       - uses: actions/github-script@v6
@@ -43,6 +52,7 @@ jobs:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          tf_actions_working_directory : staging_env
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
@@ -73,3 +83,5 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
+        with:
+          tf_actions_working_directory : staging_env
