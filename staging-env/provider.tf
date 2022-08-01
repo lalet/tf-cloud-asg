@@ -16,4 +16,12 @@ terraform {
   #  encrypt = true
   #}
   required_version = "~> 0.14.11"
+
+  cloud {
+    organization = "telal"
+
+    workspaces {
+      name = "tfe-asg"
+    }
+  }
 }
