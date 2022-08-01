@@ -15,5 +15,13 @@ terraform {
   #  region  = "us-west-2"
   #  encrypt = true
   #}
-  required_version = "~> 0.14.11"
+  required_version = ">= 1.1.0"
+
+  backend "remote" {
+    organization = "telal"
+
+    workspaces {
+      name = "tfe-asg"
+    }
+  }
 }
