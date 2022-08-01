@@ -8,5 +8,5 @@ output "elb_name" {
 }
 
 output "elb_dns_name" {
-  value = aws_elb.elb.elb_dns_name
+  value = aws_elb.elb.dns_name
 }
