@@ -8,6 +8,7 @@
 Used the Ubuntu 20 AMI from amazon, installed the flask application and used gunicorn to start the server, nginx as proxy and took a snapshot of the image to be used as base ami [Reference](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
 
 ### Terraform Pre-requisites
+ - [AWS access key id and secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
  - Base ami that can serve the flask application on startup (default : ami-0bf93727c047adcf1)
  - Self signed certificate or amazon issued certificate for https listener in the loadbalancer (default: "arn:aws:acm:us-west-2:306984394133:certificate/16c563ab-166e-4725-8b5f-fa775f50d9f3"). [Link](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html)
  - VPC routing is in place in case the application is deployed on private vpc (used the default vpc)
