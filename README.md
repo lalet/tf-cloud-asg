@@ -10,7 +10,7 @@ Used the Ubuntu 20 AMI from amazon, installed the flask application and used gun
 ### Terraform Pre-requisites
  - [AWS access key id and secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
  - Base ami that can serve the flask application on startup (default : ami-0bf93727c047adcf1)
- - Self signed certificate or amazon issued certificate for https listener in the loadbalancer (default: "arn:aws:acm:us-west-2:306984394133:certificate/16c563ab-166e-4725-8b5f-fa775f50d9f3"). [Link](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html)
+ - Self signed certificate or amazon issued certificate for https listener in the loadbalancer (default: "arn:aws:acm:us-west-2:306984394133:certificate/16c563ab-166e-4725-8b5f-fa775f50d9f3"). [Request a public certificate](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html)
  - VPC routing is in place in case the application is deployed on private vpc (used the default vpc)
 - SNS module doesn't fully support email at the moment as a [protocol](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription#:~:text=protocol%20%2D%20(Required)), so had to manually create a topic and subscription and add it to cloudwatch action (default: arn:aws:sns:us-west-2:306984394133:cpu_asg_alarm:e21cbd79-b859-4474-bc0a-9ceff032572d)
 - Modular TF code can serve multiple environments, we will have to create separate workspaces for each environment, by creating a new folder, setup terraform cloud workspace pointing to newer directory and update to the github action yaml to act on changes or pull request to the newer directory
