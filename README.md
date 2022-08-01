@@ -2,6 +2,8 @@
 
 **Application Link** : [URL](https://terraform-elb-staging-762515498.us-west-2.elb.amazonaws.com)
 
+[![Terraform](https://github.com/lalet/tf-cloud-asg/actions/workflows/terraform.yml/badge.svg?branch=main)](https://github.com/lalet/tf-cloud-asg/actions/workflows/terraform.yml)
+
 ### AMI Creation
 Used the Ubuntu 20 AMI from amazon, installed the flask application and used gunicorn to start the server, nginx as proxy and took a snapshot of the image to be used as base ami [Reference](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
 
