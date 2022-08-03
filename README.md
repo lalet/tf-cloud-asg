@@ -27,5 +27,6 @@ Used the Ubuntu 20 AMI from amazon, installed the flask application and used gun
  - Parameterize cpu utilization threshold (default thresholds: low load = 20, high load = 80 over a period of 120 seconds)
  - Use aws cli with local exec to create sns topic and subscription for email
  - More intelligent routing based on paths on load balancer
+ - Terraform Cloud do not support run variables at the moment so cannot use *tfvars* at the moment, could change it to s3 bucket to overcome it.
 
 
